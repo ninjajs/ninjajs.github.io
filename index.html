@@ -1,1 +1,418 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <meta name="robots" content="noindex,follow"/>
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="js/timeline/css/timeline.min.css" />
+    <link rel="stylesheet" href="js/photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="js/photoswipe/default-skin/default-skin.css">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Portfolio</title>
+
+    <style>
+    *, *:before, *:after {
+      box-sizing: border-box;
+      font-family: 'Lato', sans-serif;
+    }
+    h2 {
+      margin-bottom: 5px;
+    }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 25px;
+    }
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    #timeline {
+      display: none;
+      width: 768px;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .timeline-container {
+      width: 640px;
+      margin: 60px auto;
+    }
+    .timeline-list {
+      width: 640px;
+      height: 400px;
+      border-radius: 3px;
+    }
+    .timeline-item {
+      float: left;
+      width: 640px;
+      height: 400px;
+      color: #fff;
+      text-align: center;
+      border: 0;
+    }
+    .timeline-item ul {
+      text-align: left;
+      font-size: 14px;
+    }
+    .timeline-item ul li {
+      margin-bottom: 5px;
+      margin-left: 5px;
+    }
+    .theme-1 { background: #4A2AB2; }
+    .theme-2 { background: #7dffc3; }
+    .theme-3 { background: #23A5E9; }
+    .theme-4 { background: #93C763; }
+    .theme-5 { background: #949923; }
+    .theme-6 { background: #990055; }
+    .gallery {
+      margin-bottom: 50px;
+      text-align: left;
+    }
+    .gallery > div {
+      cursor: pointer;
+      width: 120px;
+      height: 120px;
+      display: inline-block;
+      font-size: 12px;
+      margin: 20px 0px 0px 20px;
+      text-align: center;
+    }
+    .tech {
+      clear: both;
+      font-size: 13px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      h2 {
+        font-size: 14px;
+      }
+      h3 {
+        font-size: 12px;
+      }
+      .timeline-container {
+        width: 250px;
+      }
+      .timeline-list {
+        width: 250px;
+        height: 520px;
+      }
+      .timeline-item {
+        float: left;
+        width: 250px;
+        height: 520px;
+        font-size: 11px;
+      }
+      .timeline-item ul {
+        padding: 0 30px;
+        font-size: 12px;
+      }
+      .tech {
+        font-size: 10px;
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+
+    <div class="fixed">
+      <div id="timeline">
+        <div class="timeline-container">
+          <div class="timeline timeline-small-box timeline-3">
+            <div class="theme-3" data-time="2017">
+              <h2>Senior Front End Engineer</h2>
+              <h3>Motif Investing</h3>
+              <ul>
+                <li>Developed web application front-end</li>
+                <li>Developed marketing website</li>
+              </ul>
+              <div class="gallery">
+                <div onclick="motifBrokerageGallery()">
+                  <img src="images/portfolio/motif/brokerage.jpg" width="100" />
+                  <p>Trading application</p>
+                </div>
+                <div onclick="motifMarketingGallery()">
+                  <img src="images/portfolio/motif/marketing.jpg" width="100" />
+                  <p>Marketing website</p>
+                </div>
+              </div>
+              <div class="tech">
+                Technologies: javascript, handlebars, jquery, underscore, highcharts, less, wordpress, php, java
+              </div>
+            </div>
+            <div class="theme-6" data-time="2015">
+              <h2>Front End Software Engineer</h2>
+              <h3>Zipfworks</h3>
+              <ul>
+                <li>Developed coupon website</li>
+                <li>Developed fashion webite</li>
+              </ul>
+              <div class="gallery">
+                <div onclick="zipfworksCouponGallery()">
+                  <img src="images/portfolio/zipfworks/coupon.jpg" width="100" />
+                  <p>Coupon website</p>
+                </div>
+                <div onclick="zipfworksFashionGallery()">
+                  <img src="images/portfolio/zipfworks/fashion.jpg" width="100" />
+                  <p>Fashion website</p>
+                </div>
+              </div>
+              <div class="tech">
+                Technologies: ember.js, coffescript, jquery, handlebars, bootstrap, less, scss
+              </div>
+            </div>
+            <div class="theme-4" data-time="2013">
+              <h2>Front End Web Engineer</h2>
+              <h3>Xen</h3>
+              <ul>
+                <li>Developed social web application</li>
+                <li>Developed marketing website</li>
+              </ul>
+              <div class="gallery">
+                <div onclick="xenMarketingGallery()">
+                  <img src="images/portfolio/xen/marketing.jpg" width="100" />
+                  <p>Marketing website</p>
+                </div>
+              </div>
+              <div class="tech">
+                Technologies: backbone.js, javascript, handlebars, jquery, underscore, wordpress, php
+              </div>
+            </div>
+            <div class="theme-1" data-time="2012">
+              <h2>webOS Mobile App Developer </h2>
+              <h3></h3>
+              <ul>
+                <li>Developed mobile apps for Palm webOS smartphones</li>
+              </ul>
+              <div class="gallery">
+                <div onclick="webOSGallery()">
+                  <img src="images/portfolio/webos/webos.jpg" width="100" />
+                  <p>webOS apps</p>
+                </div>
+              </div>
+              <div class="tech">
+                Technologies: html, css, javascript, prototype.js
+              </div>
+            </div>
+            <!--<div class="theme-2" data-time="2010">8</div>-->
+          </div>
+        </div><!-- /.timeline-container -->
+      </div>
+    </div>
+    <br />
+
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+            <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/timeline/js/timeline.min.js"></script>
+    <script src="js/photoswipe/photoswipe.min.js"></script>
+    <script src="js/photoswipe/photoswipe-ui-default.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $('.timeline-3').Timeline({
+          autoplay: false,
+          mode: 'vertical',
+          itemClass: 'timeline-item'
+        });
+        $('#timeline').show();
+      });
+
+      function motifBrokerageGallery() {
+        // build items array
+        var items = [
+          { src: 'images/portfolio/motif/brokerage/impact-chart.jpg', w: 1200, h: 653, title: 'Impact performance page' },
+          { src: 'images/portfolio/motif/brokerage/impact-dashboard.jpg', w: 1200, h: 740, title: 'Impact dashboard' },
+          { src: 'images/portfolio/motif/brokerage/impact-marketing.jpg', w: 1200, h: 716, title: 'Impact marketing page' },
+          { src: 'images/portfolio/motif/brokerage/impact-marketing-mobile.jpg', w: 420, h: 1000, title: 'Impact marketing page mobile responsive' },
+          { src: 'images/portfolio/motif/brokerage/impact-marketing-tablet.jpg', w: 970, h: 1000, title: 'Impact marketing page tablet responsive' },
+          { src: 'images/portfolio/motif/brokerage/raf.jpg', w: 1200, h: 753, title: 'Refer a friend' },
+        ];
+
+        openGallery(items);
+      }
+
+      function motifMarketingGallery() {
+        // build items array
+        var items = [
+          { src: 'images/portfolio/motif/wordpress/blog.jpg', w: 1200, h: 782, title: 'Blog' },
+          { src: 'images/portfolio/motif/wordpress/blog-post.jpg', w: 1200, h: 783, title: 'Blog post' },
+          { src: 'images/portfolio/motif/wordpress/blog-mobile.jpg', w: 407, h: 1000, title: 'Blog mobile responsive' },
+          { src: 'images/portfolio/motif/wordpress/blog-tablet.jpg', w: 1000, h: 1000, title: 'Blog tablet responsive' },
+          { src: 'images/portfolio/motif/wordpress/faq.jpg', w: 1200, h: 791, title: 'FAQ' }
+        ];
+
+        openGallery(items);
+      }
+
+      function zipfworksCouponGallery() {
+        // build items array
+        var items = [
+          { src: 'images/portfolio/zipfworks/coupon/bpc.jpg', w: 1200, h: 866, title: 'Homepage' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc2.jpg', w: 1200, h: 875, title: 'Homepage coupons' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc3.jpg', w: 1200, h: 865, title: 'Merchant page' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc4.jpg', w: 1200, h: 874, title: 'Search dropdown' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc5.jpg', w: 1200, h: 873, title: 'Search results' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc6.jpg', w: 1200, h: 871, title: 'Search coupon results' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc7.jpg', w: 1200, h: 867, title: 'Coupon code' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc8.jpg', w: 1200, h: 887, title: 'Printable coupon' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc9.jpg', w: 1200, h: 880, title: 'Coupons by category' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc10.jpg', w: 1200, h: 870, title: 'Merchant list' },
+          { src: 'images/portfolio/zipfworks/coupon/bpc11.jpg', w: 1200, h: 885, title: 'Blog' }
+        ];
+
+        openGallery(items);
+      }
+
+      function zipfworksFashionGallery() {
+        // build items array
+        var items = [
+          { src: 'images/portfolio/zipfworks/fashion/1.jpg', w: 1200, h: 892, title: 'Homepage' },
+          { src: 'images/portfolio/zipfworks/fashion/2.jpg', w: 1200, h: 881, title: 'Product page' },
+          { src: 'images/portfolio/zipfworks/fashion/3.jpg', w: 1200, h: 891, title: 'Collections page' },
+          { src: 'images/portfolio/zipfworks/fashion/4.jpg', w: 1200, h: 889, title: 'People page' },
+          { src: 'images/portfolio/zipfworks/fashion/5.jpg', w: 1200, h: 898, title: 'Coupons' },
+          { src: 'images/portfolio/zipfworks/fashion/6.jpg', w: 1200, h: 890, title: 'Brands' },
+          { src: 'images/portfolio/zipfworks/fashion/7.jpg', w: 1200, h: 894, title: 'Collection details' },
+          { src: 'images/portfolio/zipfworks/fashion/8.jpg', w: 1200, h: 843, title: 'People details' },
+          { src: 'images/portfolio/zipfworks/fashion/9.jpg', w: 1200, h: 844, title: 'Brand details' },
+          { src: 'images/portfolio/zipfworks/fashion/10.jpg', w: 1200, h: 835, title: 'Product image' }
+        ];
+
+        openGallery(items);
+      }
+
+      function xenMarketingGallery() {
+        // build items array
+        var items = [
+          { src: 'images/portfolio/xen/marketing/1.jpg', w: 1200, h: 771, title: 'Homepage' },
+          { src: 'images/portfolio/xen/marketing/2.jpg', w: 1200, h: 771, title: 'App connect' },
+          { src: 'images/portfolio/xen/marketing/3.jpg', w: 1200, h: 772, title: 'App gallery' },
+          { src: 'images/portfolio/xen/marketing/4.jpg', w: 1200, h: 771, title: 'Understanding' },
+          { src: 'images/portfolio/xen/marketing/5.jpg', w: 1200, h: 771, title: 'Developers' },
+        ];
+
+        openGallery(items);
+      }
+
+      function webOSGallery() {
+        // build items array
+        var items = [
+          { src: 'images/portfolio/webos/1.png', w: 320, h: 480, title: 'Amazon Deals' },
+          { src: 'images/portfolio/webos/2.png', w: 320, h: 480, title: 'Calculator' },
+          { src: 'images/portfolio/webos/3.png', w: 320, h: 480, title: 'Compass' },
+          { src: 'images/portfolio/webos/4.png', w: 320, h: 480, title: 'Gmarks' },
+          { src: 'images/portfolio/webos/5.png', w: 320, h: 480, title: 'Gmarks' },
+          { src: 'images/portfolio/webos/6.png', w: 320, h: 480, title: 'Google search' },
+          { src: 'images/portfolio/webos/7.png', w: 320, h: 480, title: 'Google search' },
+          { src: 'images/portfolio/webos/8.png', w: 320, h: 480, title: 'Latitude' },
+          { src: 'images/portfolio/webos/9.png', w: 320, h: 480, title: 'My Feeds' },
+          { src: 'images/portfolio/webos/10.png', w: 320, h: 480, title: 'Puzzler' },
+          { src: 'images/portfolio/webos/11.png', w: 320, h: 480, title: 'Solitaire' },
+          { src: 'images/portfolio/webos/12.png', w: 320, h: 480, title: 'Stopwatch' },
+          { src: 'images/portfolio/webos/13.png', w: 320, h: 480, title: 'Timer' },
+          { src: 'images/portfolio/webos/14.png', w: 320, h: 480, title: 'Twitter' },
+          { src: 'images/portfolio/webos/15.png', w: 320, h: 480, title: 'Youtube' },
+        ];
+
+        openGallery(items);
+      }
+
+      function openGallery(items) {
+        var pswpElement = document.querySelectorAll('.pswp')[0];
+
+        // define options (if needed)
+        var options = {
+          // optionName: 'option value'
+          // for example:
+          index: 0 // start at first slide
+        };
+
+        // Initializes and opens PhotoSwipe
+        var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+        gallery.init();
+      }
+
+    </script>
+  </body>
+</html>
